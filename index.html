@@ -24,14 +24,43 @@
 <div id='map'></div>
 <script>
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhdWJpYnIiLCJhIjoiY2p5aHJuZHRnMDJwdzNucDBkc3NoNmR2OCJ9.Dq-q5yKwOpULPIRJMhqnow';
-var map = new mapboxgl.Map({
-  container: 'map', // container id
-  style: 'mapbox://styles/staubibr/cjz1cmtys0yee1cpdmnftk2f0', // stylesheet location
-  center: [-75.6972, 45.4215], // starting position
-  zoom: 11 // starting zoom
-});
+function GetUrlParameter(name) {				
+	name = name.replace(/[\[\]]/g, '\\$&');
+	
+	var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+	
+	results = regex.exec(window.location.href);
+	
+	if (!results) return null;
+	
+	if (!results[2]) return '';
+	
+	return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
+var map = GetUrlParameter("map");
+
+if (map == null) map = "odb";
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhdWJpYnIiLCJhIjoiY2p5aHJuZHRnMDJwdzNucDBkc3NoNmR2OCJ9.Dq-q5yKwOpULPIRJMhqnow';
+
+if (map == "odb") {
+	var map = new mapboxgl.Map({
+	  container: 'map', // container id
+	  style: 'mapbox://styles/staubibr/cjz1cmtys0yee1cpdmnftk2f0', // stylesheet location
+	  center: [-75.6972, 45.4215], // starting position
+	  zoom: 11 // starting zoom
+	});
+}
+else if (map == "campus") {
+	var map = new mapboxgl.Map({
+	  container: 'map', // container id
+	  style: 'mapbox://styles/staubibr/cjz1pb1g76swj1coy6ec94cx7', // stylesheet location
+	  center: [-75.69596, 45.3858], // starting position
+	  zoom: 15 // starting zoom
+	});
+}
+	
 </script>
 </body>
 </html>
