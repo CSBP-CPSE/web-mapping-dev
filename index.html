@@ -78,6 +78,34 @@ else if (map == "campus") {
 	  center: [-75.69596, 45.3858], // starting position
 	  zoom: 15 // starting zoom
 	});
+	
+	map.on('load', function(ev) {
+
+		map.moveLayer('tunnels')
+		map.moveLayer('rails')
+		map.moveLayer('roads')
+		map.moveLayer('parking-lot-lines')
+		map.moveLayer('trees')
+		map.moveLayer('shrubs')
+		map.moveLayer('buildings')
+
+		var classes = [
+		  'case',
+		  ['==', ['get', 'status'], 'OnGoing'],
+		  '#E0005F',
+		  ['<', ['get', 'Shape_Area'], 500],
+		  '#00C2D6',
+		  ['<', ['get', 'Shape_Area'], 1000],
+		  '#009BE5',
+		  ['<', ['get', 'Shape_Area'], 3000],
+		  '#0073E1',
+		  ['<', ['get', 'Shape_Area'], 5000],
+		  '#0047C4',
+		  '#05028D'
+		];
+		
+		map.setPaintProperty('buildings', 'fill-color', classes);
+	})
 }
 
 var nav = new mapboxgl.NavigationControl();
