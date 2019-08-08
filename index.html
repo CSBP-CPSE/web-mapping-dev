@@ -59,6 +59,25 @@ else if (map == "campus") {
 	  center: [-75.69596, 45.3858], // starting position
 	  zoom: 15 // starting zoom
 	});
+
+	map.on('load', function(ev) {
+		var classes = [
+		  'case',
+		  ['<', ['get', 'Shape_Area'], 1000],
+		  '#F9F871',
+		  ['<', ['get', 'Shape_Area'], 3000],
+		  '#8ADE80',
+		  ['<', ['get', 'Shape_Area'], 5000],
+		  '#00BB98',
+		  ['<', ['get', 'Shape_Area'], 10000],
+		  '#0092A0',
+		  ['<', ['get', 'Shape_Area'], 20000],
+		  '#00678F',
+		  '#1C3E66'
+		];
+
+		map.setPaintProperty('odb-ontario-4326', 'fill-color', classes);
+	})
 }
 
 var nav = new mapboxgl.NavigationControl();
@@ -66,39 +85,20 @@ var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-left');
 	
 map.addControl(new mapboxgl.GeolocateControl({
-    positionOptions: { enableHighAccuracy: true },
-    trackUserLocation: true
+	positionOptions: { enableHighAccuracy: true },
+	trackUserLocation: true
 }));
 
 // map.addControl(new mapboxgl.AttributionControl({ compact: true }));
 
 var scale = new mapboxgl.ScaleControl({
-    maxWidth: 80,
-    unit: 'imperial'
+	maxWidth: 80,
+	unit: 'imperial'
 });
 
 map.addControl(scale);
 
 scale.setUnit('metric');
-
-map.on('load', function(ev) {
-	var classes = [
-	  'case',
-	  ['<', ['get', 'Shape_Area'], 1000],
-	  '#F9F871',
-	  ['<', ['get', 'Shape_Area'], 3000],
-	  '#8ADE80',
-	  ['<', ['get', 'Shape_Area'], 5000],
-	  '#00BB98',
-	  ['<', ['get', 'Shape_Area'], 10000],
-	  '#0092A0',
-	  ['<', ['get', 'Shape_Area'], 20000],
-	  '#00678F',
-	  '#1C3E66'
-	];
-
-	map.setPaintProperty('odb-ontario-4326', 'fill-color', classes);
-})
 
 </script>
 </body>
