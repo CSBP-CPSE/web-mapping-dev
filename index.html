@@ -18,6 +18,10 @@
         bottom: 0;
         width: 100%;
       }
+	  
+	  .mapboxgl-canvas {
+		cursor : pointer;
+	  }
     </style>
 </head>
 <body>
@@ -38,76 +42,87 @@ function GetUrlParameter(name) {
 	return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-var map = GetUrlParameter("map");
+function Request(url, success, failure) {
+	var xhttp = new XMLHttpRequest();
+	
+	xhttp.onreadystatechange = function() {
+		if (this.readyState != 4) return;
+	
+		// TODO : Switched to this.response, check if it breaks anything
+		if (this.status == 200) success(this.response);
+		
+		else failure({ status:this.status, response:this.response });
+	};
+	
+	xhttp.open("GET", url, true);
+	
+	xhttp.send();
+}
 
-if (map == null) map = "odb";
+function HTMLize(json) {
+	var html = "<div class='popup-inner'>";
+
+	for (var key in json) {
+		if (key == "tilequery") continue;
+	
+		html += "<div class='row'>";
+		html += "<span>" + key + " : </span>";
+		html += "<span>" + json[key] + "</span>";
+		html += "</div>";
+	}
+	
+	html += "</div>";
+	
+	return html;
+}
+
+var ctx = GetUrlParameter("map");
+
+if (ctx == null) ctx = "odb";
+
+var style, center, zoom, tileset, layers, paint, classes;
+
+if (ctx == "odb") {
+	style = 'mapbox://styles/staubibr/cjz1cmtys0yee1cpdmnftk2f0';
+	center = [-75.6972, 45.4215];
+	zoom = 11;
+	tileset = 'staubibr.80y3tqc4';
+	layers = ['odb-ontario-4326'];
+	paint = 'odb-ontario-4326';
+
+	classes = [
+	  'case',
+	  ['<', ['get', 'Shape_Area'], 1000], '#639AFE',
+	  ['<', ['get', 'Shape_Area'], 3000], '#967CE3',
+	  ['<', ['get', 'Shape_Area'], 5000], '#B759BB',
+	  ['<', ['get', 'Shape_Area'], 10000], '#C63388',
+	  ['<', ['get', 'Shape_Area'], 20000], '#C20652',
+	  '#AD001B'
+	];
+}
+else if (ctx == "campus") {
+	style = 'mapbox://styles/staubibr/cjz1pb1g76swj1coy6ec94cx7';
+	center = [-75.69596, 45.3858];
+	zoom = 15;
+	tileset = 'staubibr.2ipbn29t';
+	layers = ['tunnels', 'rails', 'roads', 'parking-lot-lines', 'trees', 'shrubs', 'buildings'];
+	paint = 'buildings';
+
+	classes = [
+	  'case',
+	  ['==', ['get', 'status'], 'OnGoing'], '#E0005F',
+	  ['<', ['get', 'Shape_Area'], 500], '#00C2D6',
+	  ['<', ['get', 'Shape_Area'], 1000], '#009BE5',
+	  ['<', ['get', 'Shape_Area'], 3000], '#0073E1',
+	  ['<', ['get', 'Shape_Area'], 5000], '#0047C4',
+	  '#05028D'
+	];
+}
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhdWJpYnIiLCJhIjoiY2p5aHJuZHRnMDJwdzNucDBkc3NoNmR2OCJ9.Dq-q5yKwOpULPIRJMhqnow';
 
-if (map == "odb") {
-	var map = new mapboxgl.Map({
-	  container: 'map', // container id
-	  style: 'mapbox://styles/staubibr/cjz1cmtys0yee1cpdmnftk2f0', // stylesheet location
-	  center: [-75.6972, 45.4215], // starting position
-	  zoom: 11 // starting zoom
-	});
-
-	map.on('load', function(ev) {
-		var classes = [
-		  'case',
-		  ['<', ['get', 'Shape_Area'], 1000],
-		  '#639AFE',
-		  ['<', ['get', 'Shape_Area'], 3000],
-		  '#967CE3',
-		  ['<', ['get', 'Shape_Area'], 5000],
-		  '#B759BB',
-		  ['<', ['get', 'Shape_Area'], 10000],
-		  '#C63388',
-		  ['<', ['get', 'Shape_Area'], 20000],
-		  '#C20652',
-		  '#AD001B'
-		];
-
-		map.setPaintProperty('odb-ontario-4326', 'fill-color', classes);
-	})
-}
-else if (map == "campus") {
-	var map = new mapboxgl.Map({
-	  container: 'map', // container id
-	  style: 'mapbox://styles/staubibr/cjz1pb1g76swj1coy6ec94cx7', // stylesheet location
-	  center: [-75.69596, 45.3858], // starting position
-	  zoom: 15 // starting zoom
-	});
+var map = new mapboxgl.Map({ container: 'map', style: style, center: center, zoom: zoom });
 	
-	map.on('load', function(ev) {
-
-		map.moveLayer('tunnels')
-		map.moveLayer('rails')
-		map.moveLayer('roads')
-		map.moveLayer('parking-lot-lines')
-		map.moveLayer('trees')
-		map.moveLayer('shrubs')
-		map.moveLayer('buildings')
-
-		var classes = [
-		  'case',
-		  ['==', ['get', 'status'], 'OnGoing'],
-		  '#E0005F',
-		  ['<', ['get', 'Shape_Area'], 500],
-		  '#00C2D6',
-		  ['<', ['get', 'Shape_Area'], 1000],
-		  '#009BE5',
-		  ['<', ['get', 'Shape_Area'], 3000],
-		  '#0073E1',
-		  ['<', ['get', 'Shape_Area'], 5000],
-		  '#0047C4',
-		  '#05028D'
-		];
-		
-		map.setPaintProperty('buildings', 'fill-color', classes);
-	})
-}
-
 var nav = new mapboxgl.NavigationControl();
 
 map.addControl(nav, 'top-left');
@@ -127,6 +142,49 @@ var scale = new mapboxgl.ScaleControl({
 map.addControl(scale);
 
 scale.setUnit('metric');
+
+map.on('load', function(ev) { 
+	for (var i = 0; i < layers.length; i++) map.moveLayer(layers[i]);
+	
+	map.setPaintProperty(paint, 'fill-color', classes);
+/*
+	map.on('click', function(ev) {
+		var lat = ev.lngLat.lat;
+		var lng = ev.lngLat.lng;
+		var url = "https://api.mapbox.com/v4/" + tileset + "/tilequery/" + lng + "," + lat + ".json?radius=10&access_token=" + mapboxgl.accessToken + "&layers=" + layers.join(",").replace(/-/g, "_");
+		
+		Request(url, function(ev) {
+			var coll = JSON.parse(ev);
+			
+			if (coll.features.length == 0) return;
+			
+			var json = coll.features[0].properties;
+			
+			var popup = new mapboxgl.Popup({closeOnClick: true})
+				.setLngLat([lng, lat])
+				.setHTML(HTMLize(json))
+				.addTo(map);
+		}, function(ev) {
+			alert(JSON.stringify(ev));
+		});
+	});
+*/
+
+for (var i = 0; i < layers.length; i++) {
+	map.on('click', layers[i], function(ev) { 	
+		if (ev.features.length == 0) return;
+		
+		var html = HTMLize(ev.features[0].properties);
+		
+		var popup = new mapboxgl.Popup({closeOnClick: true})
+			.setLngLat(ev.lngLat)
+			.setHTML(html)
+			.addTo(map);
+	})
+}
+
+
+});
 
 </script>
 </body>
