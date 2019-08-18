@@ -28,38 +28,37 @@
 <body>
 	<div id='map'></div>
 	<script>
-		var token = 'pk.eyJ1Ijoic3RhdWJpYnIiLCJhIjoiY2p5aHJuZHRnMDJwdzNucDBkc3NoNmR2OCJ9.Dq-q5yKwOpULPIRJMhqnow';
-		var style = 'mapbox://styles/staubibr/cjz1cmtys0yee1cpdmnftk2f0';
+		var token = 'pk.eyJ1Ijoic3RhdWJiciIsImEiOiJjanpoaHAxOGcwdnYyM2JsZWxhZDVxbTdsIn0.6N2EV6uBr6fLpdJvCy4_Sw';
+		var style = 'mapbox://styles/staubbr/cjzhhdt6g32ld1cmsagkahaga';
 		var center = [-75.6972, 45.4215];
 		var zoom = 11;
-		var layers = ['odb-ontario-4326'];
+		var layers = ['buildings'];
 		var paint = 'odb-ontario-4326';
 
 		var classes = [
 		  'case',
-		  ['<', ['get', 'Shape_Area'], 1000], '#639AFE',
-		  ['<', ['get', 'Shape_Area'], 3000], '#967CE3',
-		  ['<', ['get', 'Shape_Area'], 5000], '#B759BB',
-		  ['<', ['get', 'Shape_Area'], 10000], '#C63388',
-		  ['<', ['get', 'Shape_Area'], 20000], '#C20652',
+		  ['<', ['get', 'area'], 1000], 'rgba(0,194,214,0.5)',
+		  ['<', ['get', 'area'], 3000], 'rgba(0,155,229,0.5)',
+		  ['<', ['get', 'area'], 5000], 'rgba(0,115,225,0.5)',
+		  ['<', ['get', 'area'], 10000], 'rgba(0,71,196,0.5)',
+		  ['<', ['get', 'area'], 20000], 'rgba(194,6,82,0.5)',
 		  '#AD001B'
 		];
 
 		var map = mbvw.Map(token, 'map', style, center, zoom);
 
 		mbvw.NavigationControl(map);
-		mbvw.GeolocateControl(map);
 		mbvw.ScaleControl(map, 'metric');
 		// mbvw.AttributionControl(map);
 
 		map.on('load', function(ev) { 
-			mbvw.ReorderLayers(map, layers);
+			// mbvw.ReorderLayers(map, layers);
 			mbvw.Choropleth(map, layers, classes);
 
 			for (var i = 0; i < layers.length; i++) {
 				map.on('click', layers[i], function(ev) { 	
 					mbvw.InfoPopup(map, ev.lngLat, ev.features);
-				})
+				});
 			}
 		});
 	</script>
