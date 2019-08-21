@@ -1,66 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8' />
-    <title></title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://staubibr.github.io/mapbox-viewer/temp.js'></script>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
-    <style>
-		body {
-			margin: 0;
-			padding: 0;
-		}
-
-		#map {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			width: 100%;
-		}
-
-		.mapboxgl-canvas {
-			cursor : pointer;
-		}
-    </style>
-</head>
-<body>
-	<div id='map'></div>
-	<script>
-		var token = 'pk.eyJ1Ijoic3RhdWJiciIsImEiOiJjanpoaHAxOGcwdnYyM2JsZWxhZDVxbTdsIn0.6N2EV6uBr6fLpdJvCy4_Sw';
-		var style = 'mapbox://styles/staubbr/cjzhhdt6g32ld1cmsagkahaga';
-		var center = [-75.6972, 45.4215];
-		var zoom = 11;
-		var layers = ['buildings'];
-		var paint = 'odb-ontario-4326';
-
-		var classes = [
-		  'case',
-		  ['<', ['get', 'area'], 1000], 'rgba(0,194,214,0.5)',
-		  ['<', ['get', 'area'], 3000], 'rgba(0,155,229,0.5)',
-		  ['<', ['get', 'area'], 5000], 'rgba(0,115,225,0.5)',
-		  ['<', ['get', 'area'], 10000], 'rgba(0,71,196,0.5)',
-		  ['<', ['get', 'area'], 20000], 'rgba(194,6,82,0.5)',
-		  '#AD001B'
-		];
-
-		var map = mbvw.Map(token, 'map', style, center, zoom);
-
-		mbvw.NavigationControl(map);
-		mbvw.ScaleControl(map, 'metric');
-		// mbvw.AttributionControl(map);
-
-		map.on('load', function(ev) { 
-			// mbvw.ReorderLayers(map, layers);
-			mbvw.Choropleth(map, layers, classes);
-
-			for (var i = 0; i < layers.length; i++) {
-				map.on('click', layers[i], function(ev) { 	
-					mbvw.InfoPopup(map, ev.lngLat, ev.features);
-				});
-			}
-		});
-	</script>
-</body>
+	<head>
+		<meta charset='utf-8' />
+		<title>Linkable Open Data Environment Demo</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+		
+		<script src='http://localhost:81/Mapbox-Viewer/mbtools-bundle.js'></script>
+		
+		<script src='index.js' type="module"></script>
+		<link href='index.css' rel='stylesheet' />
+	</head>
+	
+	<body>
+		<div id='map'></div>
+	</body>
 </html>
