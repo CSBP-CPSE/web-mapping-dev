@@ -17,14 +17,14 @@ map.on('load', function(ev) {
 	  '#AD001B'
 	];
 
-	MBT.ReorderLayers(map, ["buildings"]);
-	MBT.Choropleth(map, ["buildings"], classes);
+	MBT.Map.ReorderLayers(map, ["buildings"]);
+	MBT.Map.Choropleth(map, ["buildings"], classes);
 
 	map.on('click', "buildings", function(ev) {
 		if (ev.features.length == 0) return;
 	
 		var html = MBT.Utils.HTMLize(ev.features[0].properties);
 		
-		MBT.InfoPopup(map, ev.lngLat, html);
+		MBT.Map.InfoPopup(map, ev.lngLat, html);
 	});
 });
