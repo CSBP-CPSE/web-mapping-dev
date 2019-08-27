@@ -1,6 +1,8 @@
 body {
 	margin: 0;
 	padding: 0;
+	
+	font-size : 1.1 em;
 }
 
 #map {
@@ -10,6 +12,56 @@ body {
 	width: 100%;
 }
 
+input[type="radio"] {
+  margin-top: -3px;
+  vertical-align: middle;
+}
+
+input[type="radio"],
 .mapboxgl-canvas {
 	cursor : pointer;
+}
+
+.legend {
+    font-size: 1.1em;
+	margin : 5px;
+    padding: 5px;
+}
+
+.legend .legend-item > * {
+	display : inline-block;	
+	vertical-align : middle;
+	margin : 5px;
+}
+
+.legend .legend-container > *,
+.legend .toc-container > * {
+	margin-left : 8px;
+}
+
+.legend .toc-container {
+	margin-top : 5px;
+}
+
+.legend .toc-container > * {
+	display : block;	
+	cursor : pointer;
+    margin-top: 3px;
+} 
+
+.legend .legend-item .legend-icon {
+	width : 20px;
+	height : 20px;
+}
+
+.legend .legend-item-1 .legend-icon {
+	background-color : rgba(0, 140, 220, 0.8);
+}
+
+.legend .legend-item-2 .legend-icon {
+	background-color : rgba(200, 0, 40, 0.8);
+}
+
+.legend .legend-label {
+	font-weight : bold;
 }
