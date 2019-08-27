@@ -1,6 +1,6 @@
 MBT.Token = 'pk.eyJ1Ijoic3RhdWJiciIsImEiOiJjanpoaHAxOGcwdnYyM2JsZWxhZDVxbTdsIn0.6N2EV6uBr6fLpdJvCy4_Sw';
 
-var map = MBT.Factory.Map('map', 'mapbox://styles/staubbr/cjzhhdt6g32ld1cmsagkahaga', [-75.6972, 45.4215], 11);
+var map = MBT.Factory.Map('map', 'mapbox://styles/staubbr/cjztbdnpi0qgp1dpruzzu6ec4', [-75.6972, 45.4215], 11);
 
 map.addControl(MBT.Factory.NavigationControl(), 'top-left');
 map.addControl(MBT.Factory.ScaleControl('metric'));
@@ -17,14 +17,18 @@ map.on('load', function(ev) {
 	  '#AD001B'
 	];
 
-	MBT.Map.ReorderLayers(map, ["buildings"]);
-	MBT.Map.Choropleth(map, ["buildings"], classes);
-
-	map.on('click', "buildings", function(ev) {
-		if (ev.features.length == 0) return;
+	var layers = ["ab", "bc", "mb", "nb", "nl", "ns", "nt", "nu", "on", "pe", "qc", "sk", "yt"];
 	
-		var html = MBT.Utils.HTMLize(ev.features[0].properties);
+	// MBT.Map.ReorderLayers(map, ["buildings"]);
+	MBT.Map.Choropleth(map, layers, classes);
+
+	layers.forEach(function(l) {
+		map.on('click', l, function(ev) {
+			if (ev.features.length == 0) return;
 		
-		MBT.Map.InfoPopup(map, ev.lngLat, html);
+			var html = MBT.Utils.HTMLize(ev.features[0].properties);
+			
+			MBT.Map.InfoPopup(map, ev.lngLat, html);
+		});
 	});
 });
