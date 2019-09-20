@@ -37,7 +37,7 @@ input[type="radio"],
 .legend .legend-item > * {
 	display : inline-block;	
 	vertical-align : middle;
-	margin : 5px;
+	margin : 1px;
 }
 
 .legend .legend-container > *,
@@ -56,20 +56,49 @@ input[type="radio"],
 } 
 
 .legend .legend-item .legend-icon {
-	width : 20px;
-	height : 20px;
+	width : 15px;
+	height : 15px;
+	margin-right : 5px;
 }
 
 .legend .legend-item-1 .legend-icon {
-	background-color : rgba(0, 140, 220, 0.8);
+	background-color : rgba(246,239,247,0.8);
 }
 
 .legend .legend-item-2 .legend-icon {
-	background-color : rgba(200, 0, 40, 0.8);
+	background-color : rgba(208,209,230,0.8);
+}
+
+.legend .legend-item-3 .legend-icon {
+	background-color : rgba(166,189,219,0.8);
+}
+
+.legend .legend-item-4 .legend-icon {
+	background-color : rgba(103,169,207,0.8);
+}
+
+.legend .legend-item-5 .legend-icon {
+	background-color : rgba(28,144,153,0.8);
+}
+
+.legend .legend-item-6 .legend-icon {
+	background-color : rgba(1,108,89,0.8);
+}
+
+.legend .legend-item-7 .legend-icon {
+	background-color : rgba(0,0,0,0.8);
 }
 
 .legend .legend-label {
 	font-weight : bold;
+}
+
+.legend .opacity-slider {
+	text-align:center;
+}
+
+.legend .opacity-slider > input {
+	width:90%;
 }
 
 
