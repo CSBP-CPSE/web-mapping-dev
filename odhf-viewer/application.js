@@ -59,8 +59,7 @@ export default class ProxApp {
 	AddGroup() {
 		// Top-right group for legend, etc.		
 		this.group = {
-			legend : Factory.LegendControl(this.current.Legend, this.current.Title, this.current.Subtitle),
-			download : Factory.DownloadControl(null)
+			legend : Factory.LegendControl(this.current.Legend, this.current.Title, this.current.Subtitle)
 		}
 		
 		this.map.AddControl(Factory.Group(this.group));
