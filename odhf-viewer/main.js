@@ -37,7 +37,12 @@ function Start(results) {
 	var p3 = Net.JSON(`./config/config.search.json`).then(value => {
 		config.search = value.result;
 	});
-
+	/*
+	var p4 = Net.Request(`./data/data.csv`).then(value => {
+		config.data = value.result;
+	});
+	*/
+	// Promise.all([p1, p2, p3, p4]).then(results => {
 	Promise.all([p1, p2, p3]).then(results => {
 		var app = new Application(config);
 	});
