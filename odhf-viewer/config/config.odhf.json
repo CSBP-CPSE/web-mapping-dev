@@ -66,6 +66,69 @@
             },
             "color": [175,175,175]
         }
+    ],
+    "fields": [{
+            "id": "index",
+            "label": {
+                "en": "Index",
+                "fr": "Indice"
+            }
+        },{
+            "id": "hospital_type",
+            "label": {
+                "en": "Hospital type",
+                "fr": "Type d'hopital"
+            }
+        }, {
+            "id": "hospital_name",
+            "label": {
+                "en": "Hospital name",
+                "fr": "Nom de l'hôpital"
+            }
+        }, {
+            "id": "street_no",
+            "label": {
+                "en": "Street number",
+                "fr": "Numéro de rue"
+            }
+        }, {
+            "id": "street_name",
+            "label": {
+                "en": "Street name",
+                "fr": "Nom de rue"
+            }
+        }, {
+            "id": "city",
+            "label": {
+                "en": "City",
+                "fr": "Ville"
+            }
+        }, {
+            "id": "province",
+            "label": {
+                "en": "Province",
+                "fr": "Province"
+            }
+        }, {
+            "id": "postal_code",
+            "label": {
+                "en": "Postal Code",
+                "fr": "Code postal"
+            }
+        }, {
+            "id": "longitude",
+            "label": {
+                "en": "Longitude",
+                "fr": "Longitude"
+            }
+        }, {
+            "id": "latitude",
+            "label": {
+                "en": "Latitude",
+                "fr": "Latitude"
+            }
+        }
     ]
+
 
 }
