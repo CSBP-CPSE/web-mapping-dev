@@ -1,4 +1,3 @@
- 
 import Core from "../basic-tools/tools/core.js";
 import Net from "../basic-tools/tools/net.js";
 
@@ -9,7 +8,6 @@ Net.JSON(`./config/config.nls.json`).then(value => {
 	Core.locale = document.documentElement.lang || "en";
 	Core.nls = value.result;
 	
-	
 	var p1 = Net.JSON(`./config/config.applications.json`);
 	
 	p1.then(Start);
@@ -19,11 +17,9 @@ Net.JSON(`./config/config.nls.json`).then(value => {
 function Start(results) {	
 	var id = Net.GetUrlParameter("app");
 	var maps = results.result;
-	//var app = maps[id] || maps["base"];
+
 	var app =  maps["base"];
 
-
-	
 	var defs = app.map(m => Net.JSON(m));
 	
 	var config = {}
@@ -41,9 +37,7 @@ function Start(results) {
 	var p3 = Net.JSON(`./config/config.search.json`).then(value => {
 		config.search = value.result;
 	});
-	
 
-		
 	Promise.all([p1, p2, p3]).then(results => {
 		var app = new Application(config);
 	});

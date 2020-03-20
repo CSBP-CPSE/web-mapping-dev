@@ -1,0 +1,67 @@
+{
+    "id": "odhf",
+    "style": "mapbox://styles/deil-leid/ck80712kb0ddu1in7vg075h4t",
+    "layers": [{
+            "id": "odhf"
+        }
+    ],
+    "title": {
+        "en": "Open database of health facilities",
+        "fr": "Base de données ouvertes des établissement de santé"
+    },
+    "description": null,
+    "legend": [{
+            "color": [194, 194, 194],
+            "label": {
+                "en": "All types",
+                "fr": "Tous les types"
+            },
+            "value": ["all", ["==", ["get", "Residential care"], 1], ["all", ["==", ["get", "Acute Care Hospital"], 1], ["==", ["get", "Outpatient Health Services"], 1]]]
+        }, {
+            "color": [169, 46, 239],
+            "label": {
+                "en": "Acute care hospital and <br>Outpatient Health Services",
+                "fr": "Hôpital de soins intensifs et <br>Services de santé ambulatoire"
+            },
+            "value": ["all", ["==", ["get", "Acute Care Hospital"], 1], ["==", ["get", "Outpatient Health Services"], 1]]
+        }, {
+            "color": [226, 220, 18],
+            "label": {
+                "en": "Acute care hospital and <br>Residential care",
+                "fr": "Hôpital de soins intensifs et <br>Soins résidentiels"
+            },
+            "value": ["all", ["==", ["get", "Acute Care Hospital"], 1], ["==", ["get", "Residential care"], 1]]
+        }, {
+            "color": [239, 129, 11],
+            "label": {
+                "en": "Outpatient Health Services and <br>Residential care",
+                "fr": "Services de santé ambulatoire et <br>Soins résidentiels"
+            },
+            "value": ["all", ["==", ["get", "Outpatient Health Services"], 1], ["==", ["get", "Residential care"], 1]]
+        }, {
+            "color": [102, 25, 25],
+            "label": {
+                "en": "Acute care hospital",
+                "fr": "Hôpital de soins intensifs"
+            },
+            "value": ["==", ["get", "Acute Care Hospital"], 1]
+        }, {
+            "color": [23, 168, 253],
+            "label": {
+                "en": "Outpatient Health Services",
+                "fr": "Services de santé ambulatoire"
+            },
+            "value": ["==", ["get", "Outpatient Health Services"], 1]
+        }, {
+            "color": [44, 184, 5],
+            "label": {
+                "en": "Residential care",
+                "fr": "Soins résidentiels"
+            },
+            "value": ["==", ["get", "Residential Care"], 1]
+        }, {
+            "color": [0, 0, 0]
+        }
+    ]
+
+}

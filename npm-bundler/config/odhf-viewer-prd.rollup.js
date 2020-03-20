@@ -1,9 +1,9 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-    input: '../basic-tools/btools-es5.js',
+    input: '../odhf-viewer/main.js',
     output: {
-        file: '../basic-tools/btools-es5.min.js',
+        file: '../../odhf-viewer-prd/main.min.js',
         format: 'iife',
         name: 'bundle'
     },

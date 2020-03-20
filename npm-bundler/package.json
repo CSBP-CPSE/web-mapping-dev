@@ -12,13 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "mbt_es5": "rollup -c ./config/mapbox-tools.es5.rollup.js",
-    "mbt_es6": "rollup -c ./config/mapbox-tools.es6.rollup.js",
-    "bt_es5": "rollup -c ./config/basic-tools.es5.rollup.js",
-    "bt_es6": "rollup -c ./config/basic-tools.es6.rollup.js",
-    "lode_viewer": "rollup -c ./config/lode-viewer.rollup.js",
-    "build": "rollup -c ./config/lode-viewer-bruno.rollup.js"
+    "proximity": "rollup -c ./config/proximity-viewer-prd.rollup.js",
+    "odhf": "rollup -c ./config/odhf-viewer-prd.rollup.js"
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,9 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-    input: '../lode-viewer-Bruno/lode-viewer/main.js',
+    input: '../lode-viewer/main.js',
     output: {
-        file: '../lode-viewer/main.min.js',
+        file: '../../proximity-viewer-prd/main.min.js',
         format: 'iife',
         name: 'bundle'
     },

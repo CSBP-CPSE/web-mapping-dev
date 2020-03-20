@@ -8,23 +8,19 @@ body {
 	padding: 0;
 }
 
-main {
-    margin-left: 50%;
-    transform: translate(-50%);
-    width: 800px;
+main { 
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
 }
 
 #map {
-    position: relative;
-    width: 800px;
-    height: 600px;
-	
-    /*
     position: absolute;
 	top: 0;
 	bottom: 0;
 	width: 100%;
-    */
 }
 
 button {
