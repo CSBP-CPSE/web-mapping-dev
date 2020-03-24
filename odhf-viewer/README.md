@@ -1,13 +1,11 @@
-# LodeViewer
+# ODHF-Viewer
 
-A Web Viewer for LODE Data, including the Open Database of Buildings (ODB). The viewer currently provides maps for different indicators. 
+A Web Viewer for the Open Database of Health Facilities (ODHF).
 
-Population to Building : https://csbp-cpse.github.io/lode-odhf-viewer/index-en.html?app=population<br>
-Proximity Measures : https://csbp-cpse.github.io/lode-odhf-viewer/index-en.html?app=proximity
+Link: https://csbp-cpse.github.io/odhf-viewer-prd/index-en.html<br>
 
 ---------------------------------------------------------------------
 
-Une visionneuse pour les données de l'ECDO, incluant la base de données ouvertes de bâtiments (ODB). La visionneuse offre présentement des cartes pour plusieurs indicateurs. 
+Une visionneuse pour les la base de données ouvertes des établissements de santé (BDES).
 
-Population à Bâtiment : https://csbp-cpse.github.io/lode-odhf-viewer/index-fr.html?app=population<br>
-Mesures de proximité : https://csbp-cpse.github.io/lode-odhf-viewer/index-fr.html?app=proximity
+Lien: https://csbp-cpse.github.io/odhf-viewer-prd/index-fr.html<br>
