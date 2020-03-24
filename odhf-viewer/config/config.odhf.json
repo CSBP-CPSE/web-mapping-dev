@@ -1,59 +1,59 @@
 {
     "id": "odhf",
-    "style": "mapbox://styles/deil-leid/ck84xl2hv0cav1ili4659v4ob",
+    "style": "mapbox://styles/deil-leid/ck863py0x0ras1iw20r4n23c2",
     "layers": [{
             "id": "odhf"
         }
     ],
     "title": {
-        "en": "Open database of health facilities",
-        "fr": "Base de données ouvertes des établissement de santé"
+        "en": "Open Database of Health Facilities (ODHF)",
+        "fr": "Base de Données Ouvertes des Établissement de Santé"
     },
     "description": null,
     "legend": [{
-            "color": [228,26,28],
-            "label": {
-                "en": "Residential care",
-                "fr": "Soins résidentiels"
-            },
-            "value": ["==", ["get", "Type"], "1"]
-        }, {
-            "color": [55,126,184],
-            "label": {
-                "en": "Outpatient Health Services",
-                "fr": "Services de santé ambulatoire"
-            },
-            "value": ["==", ["get", "Type"], "2"]
-        }, {
-            "color": [152,78,163],
+            "color": [255,0,0],
             "label": {
                 "en": "Acute care hospital",
                 "fr": "Hôpital de soins intensifs"
             },
             "value": ["==", ["get", "Type"], "4"]
         }, {
-            "color": [77,175,74],
+            "color": [255,255,179],
             "label": {
-                "en": "Residential care and <br>Outpatient Health Services",
-                "fr": "Soins résidentiels et <br>Services de santé ambulatoire"
+                "en": "Outpatient Health Services",
+                "fr": "Services de santé ambulatoire"
             },
-            "value": ["==", ["get", "Type"], "3"]
+            "value": ["==", ["get", "Type"], "2"]
         }, {
-            "color": [255,127,0],
+            "color": [190,186,218],
             "label": {
-                "en": "Acute care hospital and<br> Residential care",
-                "fr": "Hôpital de soins intensifs et<br> Soins résidentiels"
+                "en": "Residential care",
+                "fr": "Soins résidentiels"
             },
-            "value": ["==", ["get", "Type"], "5"]
+            "value": ["==", ["get", "Type"], "1"]
         }, {
-            "color": [255,255,51],
+            "color": [153,0,153],
             "label": {
                 "en": "Acute care hospital and<br> Outpatient Health Services",
                 "fr": "Hôpital de soins intensifs et<br> Services de santé ambulatoire"
             },
             "value": ["==", ["get", "Type"], "6"]
         }, {
-            "color": [166,86,40],
+            "color": [128,177,211],
+            "label": {
+                "en": "Acute care hospital and<br> Residential care",
+                "fr": "Hôpital de soins intensifs et<br> Soins résidentiels"
+            },
+            "value": ["==", ["get", "Type"], "5"]
+        }, {
+            "color": [253,180,98],
+            "label": {
+                "en": "Outpatient Health Services and<br> Residential care",
+                "fr": "Services de santé ambulatoire et<br> Soins résidentiels"
+            },
+            "value": ["==", ["get", "Type"], "3"]
+        }, {
+            "color": [179,222,105],
             "label": {
                 "en": "All three types",
                 "fr": "Les trois types"
@@ -61,12 +61,11 @@
             "value": ["==", ["get", "Type"], "7"]
         }, {
             "label": {
-                "en": "Unknown",
-                "fr": "Inconnu"
+                "en": "Not specified",
+                "fr": "Non précisé"
             },
-            "color": [175,175,175]
-        }
-    ],
+            "color": [252,205,229]
+        }],
     "fields": [{
             "id": "index",
             "label": {

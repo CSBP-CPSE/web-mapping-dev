@@ -119,8 +119,9 @@ input[type="radio"],
 } 
 
 .legend .legend-item .legend-icon {
-	width : 15px;
-	height : 15px;
+    border-radius : 100px;
+	width : 12px;
+	height : 12px;
 	margin-right : 5px;
 }
 
