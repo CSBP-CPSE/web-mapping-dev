@@ -73,16 +73,16 @@
                 "fr": "Indice"
             }
         },{
-            "id": "hospital_type",
+            "id": "source_facility_type",
             "label": {
-                "en": "Hospital type",
-                "fr": "Type d'hôpital"
+                "en": "Facility type",
+                "fr": "Type d'installation"
             }
         }, {
-            "id": "hospital_name",
+            "id": "facility_name",
             "label": {
-                "en": "Hospital name",
-                "fr": "Nom de l'hôpital"
+                "en": "Facility name",
+                "fr": "Nom de l'installation"
             }
         }, {
             "id": "full_address",
