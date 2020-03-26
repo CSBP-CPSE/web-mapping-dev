@@ -9,6 +9,10 @@
         "en": "Open Database of Health Facilities (ODHF)",
         "fr": "Base de Données Ouvertes des Établissement de Santé"
     },
+	"subtitle" : {
+		"en" : "Version 1.0",
+		"fr" : "Version 1.0"
+	},
     "description": null,
     "legend": [{
             "color": [255,0,0],
