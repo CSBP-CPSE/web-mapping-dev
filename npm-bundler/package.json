@@ -13,7 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "proximity": "rollup -c ./config/proximity-viewer-prd.rollup.js",
-    "odhf": "rollup -c ./config/odhf-viewer-prd.rollup.js"
+    "odhf": "rollup -c ./config/odhf-viewer-prd.rollup.js",
+    "population": "rollup -c ./config/population-viewer-prd.rollup.js"
   },
   "repository": {
     "type": "git",
