@@ -3,7 +3,7 @@ import babel from 'rollup-plugin-babel';
 export default {
     input: '../odhf-viewer/main.js',
     output: {
-        file: '../../odhf-viewer-prd/main.min.js',
+        file: '../../web-mapping-prd/odhf-viewer/main.min.js',
         format: 'iife',
         name: 'bundle'
     },

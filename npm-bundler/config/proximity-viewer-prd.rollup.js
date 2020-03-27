@@ -3,7 +3,7 @@ import babel from 'rollup-plugin-babel';
 export default {
     input: '../lode-viewer/main.js',
     output: {
-        file: '../../proximity-viewer-prd/main.min.js',
+        file: '../../web-mapping-prd/proximity-viewer/main.min.js',
         format: 'iife',
         name: 'bundle'
     },

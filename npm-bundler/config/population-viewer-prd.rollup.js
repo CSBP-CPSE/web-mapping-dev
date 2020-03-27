@@ -3,7 +3,7 @@ import babel from 'rollup-plugin-babel';
 export default {
     input: '../population-viewer/main.js',
     output: {
-        file: '../../population-viewer-prd/main.min.js',
+        file: '../../web-mapping-prd/population-viewer/main.min.js',
         format: 'iife',
         name: 'bundle'
     },
