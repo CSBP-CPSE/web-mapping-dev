@@ -64,7 +64,34 @@ export default class ProxApp {
 		}
 		
 		this.map.AddControl(Factory.Group(this.group));
+
+		this.group.legend.On("LegendChange", this.OnLegend_Changed.bind(this));
+
+		/*
+		this.group.legend.chkBoxes.forEach(l => {
+			l.addEventListener("change", this.OnCheckbox_Checked.bind(this));
+		}); */
+		//this.group.legend.chkBox.addEventListener("change", this.OnCheckbox_Checked.bind(this));
+		//var xx = this.group.legend.chkBoxes
 	}
+
+
+
+	OnLegend_Changed(ev) {
+		var chkBoxesSt = ev.state;
+
+		var opacityArr = chkBoxesSt.map(function(i){ 
+            return Number(i.checkbox.checked); 
+        })
+
+        this.map.Choropleth([this.current.LayerIDs[0]], 'circle-color', this.current.Legend, opacityArr);
+        this.map.ChoroplethVarOpac([this.current.LayerIDs[0]], 'circle-stroke-color', this.current.Legend, opacityArr);
+
+        this.map.ChoroplethVarOpac( [this.current.LayerIDs[1]] , 'text-color', this.current.Legend, opacityArr);
+    }
+
+ 
+
 	
 	AddMenu() {
 		// Top-left menu below navigation
@@ -105,7 +132,7 @@ export default class ProxApp {
 	OnMapStyleChanged_Handler(ev) {		
 		this.map.SetClickableLayers(this.current.LayerIDs);
 		
-		this.map.Choropleth(this.current.LayerIDs, 'circle-color', this.current.Legend, 1);
+		this.map.Choropleth([this.current.LayerIDs[0]], 'circle-color', this.current.Legend, 1);
 	}
 	
 	OnMapMoveEnd_Handler(ev) {		
@@ -137,6 +164,9 @@ export default class ProxApp {
 		
 		this.map.FitBounds(ev.item.extent, { padding:30, animate:false });
 	}
+
+ 
+
  /*
 	OnMapLoad_Handler(ev) {
 		this.map.AddSource('odhf', this.data);

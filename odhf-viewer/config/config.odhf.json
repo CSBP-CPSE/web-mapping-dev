@@ -1,9 +1,8 @@
 {
     "id": "odhf",
     "style": "mapbox://styles/deil-leid/ck897mgfo0x0k1jlnm0kjq725",
-    "layers": [{
-            "id": "odhf"
-        }
+    "layers": [
+        { "id": "odhf"},{ "id": "odhf-labels"}
     ],
     "title": {
         "en": "Open Database of Health Facilities (ODHF)",
