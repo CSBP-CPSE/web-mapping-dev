@@ -11,7 +11,6 @@ export default class ProxApp {
 	constructor(config) {		
 		this.config = config;
 		this.current = this.config.maps[Store.Map];
-		// this.data = this.CSVtoJson(config.data);
 
 		if (!this.current) this.current = Util.FirstProperty(this.config.maps);
 		
@@ -32,7 +31,6 @@ export default class ProxApp {
 		this.map.On("MoveEnd", this.OnMapMoveEnd_Handler.bind(this));
 		this.map.On("ZoomEnd", this.OnMapZoomEnd_Handler.bind(this));
 		this.map.On("Click", this.OnMapClick_Handler.bind(this));
-		// this.map.On("Load", this.OnMapLoad_Handler.bind(this));
 	}
 
 	AddBaseControls() {
@@ -66,16 +64,7 @@ export default class ProxApp {
 		this.map.AddControl(Factory.Group(this.group));
 
 		this.group.legend.On("LegendChange", this.OnLegend_Changed.bind(this));
-
-		/*
-		this.group.legend.chkBoxes.forEach(l => {
-			l.addEventListener("change", this.OnCheckbox_Checked.bind(this));
-		}); */
-		//this.group.legend.chkBox.addEventListener("change", this.OnCheckbox_Checked.bind(this));
-		//var xx = this.group.legend.chkBoxes
 	}
-
-
 
 	OnLegend_Changed(ev) {
 		var chkBoxesSt = ev.state;
@@ -90,9 +79,6 @@ export default class ProxApp {
         this.map.ChoroplethVarOpac( [this.current.LayerIDs[1]] , 'text-color', this.current.Legend, opacityArr);
     }
 
- 
-
-	
 	AddMenu() {
 		// Top-left menu below navigation
 		var bookmarks = Factory.BookmarksControl(this.config.bookmarks);
@@ -164,59 +150,4 @@ export default class ProxApp {
 		
 		this.map.FitBounds(ev.item.extent, { padding:30, animate:false });
 	}
-
- 
-
- /*
-	OnMapLoad_Handler(ev) {
-		this.map.AddSource('odhf', this.data);
-		
-		
-		this.map.map.addLayer({
-			id: 'clusters',
-			type: 'circle',
-			source: 'odhf',
-			filter: ['has', 'point_count'],
-			paint: {
-				// Use step expressions (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-step)
-				// with three steps to implement three types of circles:
-				//   * Blue, 20px circles when point count is less than 100
-				//   * Yellow, 30px circles when point count is between 100 and 750
-				//   * Pink, 40px circles when point count is greater than or equal to 750
-				'circle-color': ['step', ['get', 'point_count'], '#51bbd6',	100, '#f1f075',	750, '#f28cb1'],
-				'circle-radius': ['step', ['get', 'point_count'], 20, 100, 	30, 750, 40]
-			}
-		});
-	}
- 
-	CSVtoJson(csv) {		
-		var data = Util.ParseCsv(csv);
-		
-		var json = {
-			"type": "geojson",
-			"data" : { "type" : "FeatureCollection", "features" : [] },
-			"cluster" : true,
-			"clusterMaxZoom": 14, 	// Max zoom to cluster points on
-			"clusterRadius": 50 		// Radius of each cluster when clustering points (defaults to 50)
-		}
-		
-		var fields = data.shift();
-		
-		data.forEach(d => {
-			var f = { "type": "Feature", "properties":{}, "geometry":{ "type": "Point", "coordinates":[] }};
-			
-			for (var i = 0; i < fields.length; i++) {
-				if (fields[i] == "longitude") f.geometry.coordinates[0] = +d[i];
-				
-				else if (fields[i] == "latitude") f.geometry.coordinates[1] = +d[i];
-
-				else f.properties[fields[i]] = (d[i] == "" ? null : d[i]);
-			}
-			
-			json.data.features.push(f);
-		});
-		
-		return json;
-	}
-*/
 }
