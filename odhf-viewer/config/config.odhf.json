@@ -12,6 +12,7 @@
 		"en" : "Version 1.0",
 		"fr" : "Version 1.0"
 	},
+	"hasCheckbox": "true",
     "description": null,
     "legend": [{
             "color": [255,0,0],

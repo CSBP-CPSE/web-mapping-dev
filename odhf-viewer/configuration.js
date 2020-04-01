@@ -15,6 +15,11 @@ export default class Configuration {
 	get Title() {
 		return this.title;
 	}
+
+
+	get HasCheckbox() {
+		return this.hasCheckbox;
+	}
 	
 	get Banner() {
 		return this.banner;
@@ -122,6 +127,7 @@ export default class Configuration {
 		c.banner = json.banner && json.banner[Core.locale] || null;
 		c.subtitle = json.subtitle && json.subtitle[Core.locale] || null;
 		c.description = json.description && json.description[Core.locale] || null;
+		c.hasCheckbox = json.hasCheckbox || null;
 		c.layers = json.layers || null;
 		c.legend = json.legend || null;
 		c.toc = json.toc || null;
