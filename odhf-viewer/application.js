@@ -44,6 +44,15 @@ export default class ProxApp {
 	}
 
 	AddSearch() {
+		this.config.search.items = this.config.search.items.map(i => {
+			return { 
+				id : i[0], 
+				name : i[1],
+				label : `${i[1]} (${i[0]})`, 
+				extent : [[i[2], i[3]], [i[4], i[5]]] 
+			}
+		});
+		
 		var search = Factory.SearchControl(this.config.search.items, Core.Nls("Search_Placeholder"), Core.Nls("Search_Title"));
 		
 		// Add top-left search bar
