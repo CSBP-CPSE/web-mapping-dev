@@ -36,6 +36,10 @@ export default class Configuration {
 	get Layers() {
 		return this.layers;
 	}
+
+	get DownloadLink() {
+		return this.download;
+	}
 	
 	// Get for transformed properties
 	get LayerIDs() {
@@ -127,12 +131,13 @@ export default class Configuration {
 		c.banner = json.banner && json.banner[Core.locale] || null;
 		c.subtitle = json.subtitle && json.subtitle[Core.locale] || null;
 		c.description = json.description && json.description[Core.locale] || null;
+		c.download = json.download && json.download[Core.locale] || null; 
 		c.hasCheckbox = json.hasCheckbox || null;
 		c.layers = json.layers || null;
 		c.legend = json.legend || null;
 		c.toc = json.toc || null;
 		c.fields = json.fields || null;
-		
+
 		return c;
 	}
 }

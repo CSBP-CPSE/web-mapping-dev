@@ -67,11 +67,10 @@ export default class ProxApp {
 		// Top-right group for legend, etc.		
 		this.group = {
 			legend : Factory.LegendControl(this.current.Legend, null, this.current.Title, this.current.Subtitle, this.current.HasCheckbox),
-			download : Factory.DownloadControl(null)
+			download : Factory.DownloadControl(this.current.DownloadLink)
 		}
-		
-		this.map.AddControl(Factory.Group(this.group));
 
+		this.map.AddControl(Factory.Group(this.group));
 		this.group.legend.On("LegendChange", this.OnLegend_Changed.bind(this));
 	}
 
@@ -141,7 +140,6 @@ export default class ProxApp {
 	
 	OnMapClick_Handler(ev) {
 		var features = ev.features
-		debugger
 		if (ev.features.length == 0) return;
 		
 		var html = Other.HTMLize(ev.features[0].properties, this.current.Fields, Core.Nls("Map_Not_Available"));
