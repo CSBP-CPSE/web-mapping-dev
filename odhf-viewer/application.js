@@ -141,7 +141,6 @@ export default class ProxApp {
 	
 	OnMapClick_Handler(ev) {
 		var features = ev.features
-		debugger
 		if (ev.features.length == 0) return;
 		
 		var html = Other.HTMLize(ev.features[0].properties, this.current.Fields, Core.Nls("Map_Not_Available"));
