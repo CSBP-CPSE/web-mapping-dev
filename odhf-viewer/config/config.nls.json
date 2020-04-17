@@ -28,8 +28,12 @@
         "fr": "Sélectionner un élément de la liste pour aller à celui-ci."
     },
     "Download_Title": {
-        "en": "Download data (forthcoming)",
-        "fr": "Télécharger les données (à venir)"
+        "en": "Download data",
+        "fr": "Télécharger les données"
+    },    
+    "Download_Link": {
+        "en": "https://www.statcan.gc.ca/eng/lode/databases/odhf",
+        "fr": "https://www.statcan.gc.ca/fra/ecdo/bases-donnees/bdoes"
     },
     "Search_Placeholder": {
         "en": "Enter CSD name or ID ...",

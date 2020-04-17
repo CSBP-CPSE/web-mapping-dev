@@ -65,13 +65,14 @@ export default class ProxApp {
 
 	AddGroup() {
 		// Top-right group for legend, etc.		
+
 		this.group = {
 			legend : Factory.LegendControl(this.current.Legend, null, this.current.Title, this.current.Subtitle, this.current.HasCheckbox),
-			download : Factory.DownloadControl(null)
+			//download : Factory.DownloadControl('https://www.statcan.gc.ca/eng/lode/databases/odhf')
+			download : Factory.DownloadControl(this.current.DownloadLink)
 		}
-		
-		this.map.AddControl(Factory.Group(this.group));
 
+		this.map.AddControl(Factory.Group(this.group));
 		this.group.legend.On("LegendChange", this.OnLegend_Changed.bind(this));
 	}
 
